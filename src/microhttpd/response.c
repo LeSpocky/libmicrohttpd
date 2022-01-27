@@ -494,6 +494,9 @@ MHD_add_response_header (struct MHD_Response *response,
                          const char *header,
                          const char *content)
 {
+  if (response == NULL)
+    return MHD_NO;
+
   if (MHD_str_equal_caseless_ (header, MHD_HTTP_HEADER_CONNECTION))
     return add_response_header_connection (response, content);
 
